@@ -1,0 +1,173 @@
+﻿<Window x:Class="MtuReminder.MainWindow"
+        xmlns:tb="http://www.hardcodet.net/taskbar"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        xmlns:local="clr-namespace:MtuReminder"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="131.612" Width="212"   AllowsTransparency="True" WindowStyle="None" MinWidth="232" MinHeight="160.945" MouseDown="onMouseDown">
+
+    <Window.Resources>
+        <SolidColorBrush x:Key="windowBGBrush" Color="White"  Opacity="0.2"/>
+        <SolidColorBrush x:Key="windowBGBrushBusinessDateChanged" Color="White"  Opacity=".5"/>
+    </Window.Resources>
+    <Window.Style >
+        <Style TargetType="{x:Type Window}">
+            <Style.Triggers>
+                <Trigger  Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="{StaticResource windowBGBrushBusinessDateChanged}"></Setter>
+
+                </Trigger>
+                <Trigger  Property="IsMouseOver" Value="false">
+                    <Setter Property="Background" Value="{StaticResource windowBGBrush}"></Setter>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Style>
+
+    <!--<Style TargetType="{x:Type Window}">
+        <Window.Background>
+            <SolidColorBrush Opacity="0.2" Color="White"></SolidColorBrush>
+            <Style.Triggers>
+                    <Trigger Property="IsMouseOver" Value="True">
+                        --><!--<Setter Property="Background" Value="red"></Setter>--><!--
+                        <Setter Property="Opacity" Value="1"></Setter>
+                    </Trigger>
+                    <Trigger Property="IsMouseOver" Value="False">
+                        <Setter Property="Opacity" Value=".2"></Setter>
+                    </Trigger>
+                </Style.Triggers>
+        </Window.Background>
+
+    </Style>-->
+    <Grid>
+        <!--<Grid.Style>
+            <Style TargetType="{x:Type Grid}">
+                <Style.Triggers>
+                    <Trigger Property="IsMouseOver" Value="True">
+                        --><!--<Setter Property="Background" Value="red"></Setter>--><!--
+                        <Setter Property="Opacity" Value="1"></Setter>
+                    </Trigger>
+                    <Trigger Property="IsMouseOver" Value="False">
+                        <Setter Property="Background" Value="White"></Setter>
+                        <Setter Property="Opacity" Value=".2"></Setter>
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+        </Grid.Style>-->
+
+
+        <TextBox x:Name="TxtTaskId" HorizontalAlignment="Left" Height="16" Margin="295,82,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="17" IsEnabled="False" Visibility="Hidden">
+
+        </TextBox>
+        <Button x:Name="Close" Content="بستن" HorizontalAlignment="Left" Margin="203,2,0,0" VerticalAlignment="Top" Width="27" RenderTransformOrigin="0.506,-0.807" FontSize="9" Click="Close_Click" Height="18">
+            <Button.Style >
+                <Style TargetType="{x:Type Button}">
+                    <Style.Triggers>
+                        <Trigger  Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="{StaticResource windowBGBrushBusinessDateChanged}"></Setter>
+
+                        </Trigger>
+                        <Trigger  Property="IsMouseOver" Value="false">
+                            <Setter Property="Background" Value="{StaticResource windowBGBrush}"></Setter>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+        <TextBox x:Name="TaskBodyTxt" HorizontalAlignment="Left" Height="107" Margin="2,20,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="230" RenderTransformOrigin="1,0"  TextAlignment="Right" Text="" FontSize="10">
+            <TextBox.Style >
+                <Style TargetType="{x:Type TextBox}">
+                    <Style.Triggers>
+                        <Trigger  Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="{StaticResource windowBGBrushBusinessDateChanged}"></Setter>
+
+                        </Trigger>
+                        <Trigger  Property="IsMouseOver" Value="false">
+                            <Setter Property="Background" Value="{StaticResource windowBGBrush}"></Setter>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </TextBox.Style>
+        </TextBox>
+        <!--<TextBox.Style>
+                <Style TargetType="TextBox">
+                    <Style.Triggers>
+
+                        <Trigger Property="IsMouseOver"  Value = "True">
+                            <Setter Property = "Background" Value = "Red" />
+                        </Trigger>
+
+                    </Style.Triggers>
+                </Style>
+            </TextBox.Style>
+            <TextBox.Background>
+                <SolidColorBrush Opacity="0.3" Color="White"></SolidColorBrush>
+            </TextBox.Background>-->
+
+        <Button x:Name="New" Content="جدید" HorizontalAlignment="Left" Margin="171,2,0,0" VerticalAlignment="Top" Width="27" RenderTransformOrigin="0.506,-0.807" FontSize="9" Click="New_Click" Height="18">
+            <Button.Style >
+                <Style TargetType="{x:Type Button}">
+                    <Style.Triggers>
+                        <Trigger  Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="{StaticResource windowBGBrushBusinessDateChanged}"></Setter>
+
+                        </Trigger>
+                        <Trigger  Property="IsMouseOver" Value="false">
+                            <Setter Property="Background" Value="{StaticResource windowBGBrush}"></Setter>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+        <Label x:Name="DateTimeLbl" Content="زمان انجام" HorizontalAlignment="Left" Margin="170,127,0,0" VerticalAlignment="Top" Height="24" Width="52" FontSize="10"/>
+        <Button x:Name="Apply" Content="ذخیره" HorizontalAlignment="Left" Margin="138,2,0,0" VerticalAlignment="Top" Width="27" RenderTransformOrigin="0.506,-0.807" FontSize="9" Click="Apply_Click" Height="18" >
+            <Button.Style >
+                <Style TargetType="{x:Type Button}">
+                    <Style.Triggers>
+                        <Trigger  Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="{StaticResource windowBGBrushBusinessDateChanged}"></Setter>
+
+                        </Trigger>
+                        <Trigger  Property="IsMouseOver" Value="false">
+                            <Setter Property="Background" Value="{StaticResource windowBGBrush}"></Setter>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+        <xctk:DateTimeUpDown x:Name="dtPicker" Margin="3,128,59,10"  ButtonSpinnerLocation="Left" MinWidth="162" MinHeight="20" FontSize="12" Kind="Local" MouseWheelActiveTrigger="Focused" IsManipulationEnabled="True"  CultureInfo="fa-IR" Format="Custom" FormatString="yyyy/MM/dd HH:mm:ss" >
+            <xctk:DateTimeUpDown.Style >
+                <Style TargetType="{x:Type xctk:DateTimeUpDown}">
+                    <Style.Triggers>
+                        <Trigger  Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="{StaticResource windowBGBrushBusinessDateChanged}"></Setter>
+
+                        </Trigger>
+                        <Trigger  Property="IsMouseOver" Value="false">
+                            <Setter Property="Background" Value="{StaticResource windowBGBrush}"></Setter>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </xctk:DateTimeUpDown.Style>
+        </xctk:DateTimeUpDown>
+        <Button x:Name="Apply_Copy" Content="تکمیل" HorizontalAlignment="Left" Margin="106,2,0,0" VerticalAlignment="Top" Width="27" RenderTransformOrigin="0.506,-0.807" FontSize="9" Click="Complete_Click" Height="18" >
+            <Button.Style >
+                <Style TargetType="{x:Type Button}">
+                    <Style.Triggers>
+                        <Trigger  Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="{StaticResource windowBGBrushBusinessDateChanged}"/>
+
+                        </Trigger>
+                        <Trigger  Property="IsMouseOver" Value="false">
+                            <Setter Property="Background" Value="{StaticResource windowBGBrush}"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+
+    </Grid>
+</Window>
